@@ -9,7 +9,7 @@ In a data science or machine learning project, you may prepare and study text wi
 
 Since you are already working within a Jupyter notebook, the Entator works inline allowing you to interact with your data and annotate it quickly and easily, syncing straight back to your input data arrays or matrices.
 
-Within Jupyter, you can easily home in on problem input data - perhaps only misclassified images - so you can step through and adjust bounding boxes just for those items. 
+Within Jupyter, you can easily home in on problem input data - perhaps only misclassified entity - so you can step through and adjust token type just for those items. 
 
 The Entator widget is designed with a flexible API making it quick and easy to get started exploring your dataset, guessing how to work with your data without explicit configuration where possible.
 
