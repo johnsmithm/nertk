@@ -24,6 +24,7 @@ class Entator:
         self.inputs = inputs
         self.number_letters_per_line = number_letters_per_line
         self.default_class = labels[0]
+        self.curent_class = labels[0]
         if targets is None:
             targets = [None] * len(inputs)
         if colors is not None:
