@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(name='nertk',
-      version='0.0.2',
+      version='0.0.4',
       description='Name Entity Recognition toolkit - Annotate name entities in text inline within your Jupyter notebook',
       long_description=long_description,
       long_description_content_type="text/markdown",

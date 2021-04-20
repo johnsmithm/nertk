@@ -19,10 +19,11 @@ class Entator:
     annotation_label = widgets.Label("Annotations")
     sample_label = widgets.Label("Text for annotation")
 
-    def __init__(self, labels, inputs, targets=None, colors=None, number_letters_per_line=100):
+    def __init__(self, labels, inputs, targets=None, colors=None, number_letters_per_line=100, new_line_token=None):
 
         self.inputs = inputs
         self.number_letters_per_line = number_letters_per_line
+        self.new_line_token = new_line_token
         self.default_class = labels[0]
         self.curent_class = labels[0]
         if targets is None:
@@ -83,7 +84,7 @@ class Entator:
         number_letters = 0
         for b in self.text_buttons:
 
-            if number_letters + len(b.description) > self.number_letters_per_line:
+            if number_letters + len(b.description) > self.number_letters_per_line or b.description==self.new_line_token:
                 lines.append(widgets.HBox(line))
                 line = []
                 number_letters = 0
@@ -95,7 +96,7 @@ class Entator:
 
     def addControlButtons(self):
         controls = []
-        for text in ["back", "next", "skip"]:
+        for text in ["back", "next", "skip","reset"]:
             button = self.addButton(text, "gray")
 
             def on_button_clicked(b):
@@ -105,12 +106,16 @@ class Entator:
                             self.targets[self.index] = self.current_annotations
                         self.index += 1
                     if b.description == "skip":
+                        if self.index < len(self.inputs):
+                            self.targets[self.index] = None
                         self.index += 1
                     if b.description == "back":
                         if self.index < len(self.inputs):
                             self.targets[self.index] = self.current_annotations
                         self.index -= 1
-
+                    if b.description == "reset":
+                        if self.index < len(self.inputs):
+                            self.targets[self.index] = None
                     self.index = max(0, self.index)
                     self.index = min(len(self.inputs), self.index)
 
